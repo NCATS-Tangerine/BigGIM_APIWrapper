@@ -4,7 +4,6 @@ import requests
 import time
 import json
 import pandas as pd
-from pprint import pprint
 from collections import defaultdict
 
 app = Flask(__name__)
@@ -52,7 +51,6 @@ def postBG(endpoint, data={}, base_url=base_url):
 
 def getBG(endpoint, data={}, base_url=base_url):
     req = requests.get('%s/%s' % (base_url, endpoint), data=data)
-    print(req.url)
     req.raise_for_status()
     return req.json()
 
@@ -352,4 +350,4 @@ class GetInteractionsQuery(Resource):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
